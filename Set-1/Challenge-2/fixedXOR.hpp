@@ -20,12 +20,6 @@
 #include <bitset>
 #include <sstream>
 
-namespace
-{
-    const std::string stringA = "1c0111001f010100061a024b53535009181c";
-    const std::string stringB = "686974207468652062756c6c277320657965";
-}
-
 std::string fixedLengthXOR(const std::string stringA, const std::string stringB)
 {
     std::string xorResult = "";
@@ -44,9 +38,6 @@ std::string fixedLengthXOR(const std::string stringA, const std::string stringB)
         ss << std::hex << binC.to_ulong();
         xorResult += ss.str();
     }
-}
 
-int main()
-{
-    std::cout << fixedLengthXOR(stringA, stringB) << std::endl;
+    return xorResult;
 }

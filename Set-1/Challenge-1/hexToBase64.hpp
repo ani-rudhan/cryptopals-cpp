@@ -20,7 +20,6 @@
 #include <sstream>
 
 namespace {
-    const std::string inputStr = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d";
     const std::string base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 }
 
@@ -55,9 +54,4 @@ std::string hexToBase64(const std::string &hexStr)
     }
 
     return base64EncodedStr;
-}
-
-int main()
-{
-    std::cout << "Encoded String : " << hexToBase64(inputStr) << std::endl;
 }
