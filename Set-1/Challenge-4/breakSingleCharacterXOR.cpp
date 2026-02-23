@@ -1,9 +1,19 @@
+/*
+    Set 1  Challenge 4:
+
+    Detect single-character XOR
+    One of the 60-character strings in this file has been encrypted by single-character XOR.
+
+    Find it.
+
+    (Your code from #3 should help.)
+*/
 #include "singleByteXORCipher.hpp"
 #include <iostream>
 #include <fstream>
 
 int main() {
-    std::fstream inFile(SINGLE_CHAR_XOR_INPUT_FILE_TXT_PATH);
+    std::fstream inFile(BREAK_SINGLE_KEY_XOR_INPUT_FILE_TXT_PATH);
     std::string line = "";
     int counter = 0;
     int sentenceNum = 0;

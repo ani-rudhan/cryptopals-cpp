@@ -13,15 +13,14 @@
     Cryptopals Rule
     Always operate on raw bytes, never on encoded strings. Only use hex and base64 for pretty-printing.
 */
+#pragma once
 
 #include <iostream>
 #include <bitset>
 #include <string>
 #include <sstream>
 
-namespace {
-    const std::string base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-}
+#include "base64Char.hpp"
 
 std::string hexToBase64(const std::string &hexStr)
 {

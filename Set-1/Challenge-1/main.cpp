@@ -1,4 +1,6 @@
 #include "hexToBase64.hpp"
+#include "Base64Encode.hpp"
+#include "Base64Decode.hpp"
 #include <iostream>
 
 namespace {
