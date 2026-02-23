@@ -10,6 +10,8 @@ include_directories(
     "${CMAKE_SOURCE_DIR}/Set-1/Challenge-2"
     "${CMAKE_SOURCE_DIR}/Set-1/Challenge-3"
     "${CMAKE_SOURCE_DIR}/Set-1/Challenge-4"
+    "${CMAKE_SOURCE_DIR}/Set-1/Challenge-5"
+    "${CMAKE_SOURCE_DIR}/Set-1/Challenge-6"
 )
 
 add_executable(hexToBase64 "Set-1/Challenge-1/main.cpp")
