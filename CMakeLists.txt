@@ -16,6 +16,7 @@ add_executable(hexToBase64 "Set-1/Challenge-1/main.cpp")
 add_executable(fixedXOR "Set-1/Challenge-2/main.cpp")
 add_executable(singleByteXORCipher "Set-1/Challenge-3/main.cpp")
 add_executable(singleCharacterXOR "Set-1/Challenge-4/singleCharacterXOR.cpp")
+add_executable(repeatinKeyXOR "Set-1/Challenge-5/main.cpp")
 
 add_compile_definitions(
     FREQ_DIST_PATH="${CMAKE_SOURCE_DIR}/utils/freq_dist.csv"
