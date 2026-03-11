@@ -15,42 +15,12 @@
 */
 #pragma once
 
-#include <iostream>
-#include <bitset>
 #include <string>
-#include <sstream>
 
-#include "base64Char.hpp"
+#include "HexDecode.hpp"
+#include "Base64Encode.hpp"
 
-std::string hexToBase64(const std::string &hexStr)
+inline std::string HexToBase64(const std::string &hexStr)
 {
-    std::string base64EncodedStr = "";
-    std::string binaryStr = "";
-    
-    for (auto itr = hexStr.begin(); itr != hexStr.end(); itr++)
-    {
-        auto hexToInt = std::stoul(std::string(1, *itr), nullptr, 16);
-        binaryStr += std::bitset<4>(hexToInt).to_string();
-    }
-
-    for (auto i = 0; i < binaryStr.length(); i += 6)
-    {
-        std::stringstream sixBitBinStr(binaryStr.substr(i, 6));
-        std::bitset<6> bits;
-        sixBitBinStr >> bits;
-        base64EncodedStr += base64Chars[bits.to_ulong()];
-    }
-
-    int paddingCnt = 0;
-    if ((base64EncodedStr.length() % 4) == 0)
-    {
-        auto paddingCnt = 4 - (base64EncodedStr.length() % 4);
-    }
-
-    for (auto i = 0; i < paddingCnt; i++)
-    {
-        base64EncodedStr += "=";
-    }
-
-    return base64EncodedStr;
+    return Base64Encode(HexDecodeToString(hexStr));
 }

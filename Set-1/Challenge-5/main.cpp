@@ -11,5 +11,5 @@ namespace {
     const std::string key = "ICE";
 }
 int main() {
-    std::cout << "Encrypted string : " << EncryptUsingRepearingKeyXOR(inputString, key) << std::endl;
+    std::cout << "Encrypted string : " << EncryptUsingRepeatingKeyXOR(inputString, key) << std::endl;
 }

@@ -1,6 +1,4 @@
 #include "hexToBase64.hpp"
-#include "Base64Encode.hpp"
-#include "Base64Decode.hpp"
 #include <iostream>
 
 namespace {
@@ -9,5 +7,5 @@ namespace {
 
 int main()
 {
-    std::cout << "Encoded String : " << hexToBase64(inputStr) << std::endl;
+    std::cout << "Encoded String : " << HexToBase64(inputStr) << std::endl;
 }

@@ -15,29 +15,25 @@
     746865206b696420646f6e277420706c6179
 */
 
-#include <iostream>
 #include <string>
-#include <bitset>
-#include <sstream>
 
-std::string fixedLengthXOR(const std::string stringA, const std::string stringB)
+#include "HexDecode.hpp"
+#include "HexEncode.hpp"
+
+inline std::string FixedLengthXOR(const std::string &stringA, const std::string &stringB)
 {
-    std::string xorResult = "";
-
-    for (auto itrA = stringA.begin(), itrB = stringB.begin(); ;itrA++,itrB++)
-    {
-        if ((itrA == stringA.end()) && (itrB == stringB.end()))
-        {
-            break;
-        }
-
-        auto binA = std::bitset<4>(std::stoul(std::string(1, *itrA), nullptr, 16));
-        auto binB = std::bitset<4>(std::stoul(std::string(1, *itrB), nullptr, 16));
-        auto binC = binA ^ binB;
-        std::stringstream ss;
-        ss << std::hex << binC.to_ulong();
-        xorResult += ss.str();
+    if (stringA.size() != stringB.size()) {
+        throw std::invalid_argument("Inputs must be equal-length hex strings");
     }
 
-    return xorResult;
+    auto bytesA = HexDecodeToBytes(stringA);
+    auto bytesB = HexDecodeToBytes(stringB);
+    std::string xoredBytes;
+    xoredBytes.reserve(bytesA.size());
+
+    for (std::size_t i = 0; i < bytesA.size(); i++) {
+        xoredBytes.push_back(static_cast<char>(bytesA[i] ^ bytesB[i]));
+    }
+
+    return HexEncode(xoredBytes);
 }

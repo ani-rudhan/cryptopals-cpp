@@ -11,5 +11,5 @@ namespace
 
 int main()
 {
-    std::cout << fixedLengthXOR(stringA, stringB) << std::endl;
+    std::cout << FixedLengthXOR(stringA, stringB) << std::endl;
 }

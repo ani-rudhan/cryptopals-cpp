@@ -1,13 +1,14 @@
 #pragma once
 
+#include <cctype>
 #include <map>
 #include <string>
 
-std::map<char, int> GetCharCount_LowerCase(std::string inputString) {
+inline std::map<char, int> GetCharCount_LowerCase(const std::string &inputString) {
     std::map<char, int> charCount;
 
-    for (auto c : inputString) {
-        charCount[std::tolower(c)] += 1;
+    for (unsigned char c : inputString) {
+        charCount[static_cast<char>(std::tolower(c))] += 1;
     }
 
     return charCount;

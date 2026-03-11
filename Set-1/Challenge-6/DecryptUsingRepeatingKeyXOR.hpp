@@ -1,15 +1,17 @@
 #pragma once
 
-#include <iostream>
-#include <sstream>
-#include <iomanip>
-
-std::string DecryptUsingRepeatedKeyXOR(std::string strEncryptedUsingRepeatedKeyXOR, std::string key) {
+inline std::string DecryptUsingRepeatingKeyXOR(const std::string &encrypted, const std::string &key) {
     std::string decryptedStr = "";
-    int stridx, keyidx = 0;
-    while (stridx < strEncryptedUsingRepeatedKeyXOR.size()) {
+    if (key.empty()) {
+        return decryptedStr;
+    }
+
+    decryptedStr.reserve(encrypted.size());
+    std::size_t stridx = 0;
+    std::size_t keyidx = 0;
+    while (stridx < encrypted.size()) {
         keyidx = (keyidx % key.size());
-        decryptedStr += strEncryptedUsingRepeatedKeyXOR[stridx] ^ key[keyidx];
+        decryptedStr += encrypted[stridx] ^ key[keyidx];
         
         stridx += 1;
         keyidx += 1;

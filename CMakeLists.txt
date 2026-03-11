@@ -14,6 +14,10 @@ include_directories(
     "${CMAKE_SOURCE_DIR}/Set-1/Challenge-6"
 )
 
+add_compile_options(
+    -g
+)
+
 add_executable(hexToBase64 "Set-1/Challenge-1/main.cpp")
 add_executable(fixedXOR "Set-1/Challenge-2/main.cpp")
 add_executable(singleByteXORCipher "Set-1/Challenge-3/main.cpp")
