@@ -56,3 +56,53 @@ inline std::string Base64Decode(const std::string &inputString) {
 
     return base64DecodedStr;
 }
+
+inline std::vector<u_int8_t> Base64DecodeToBytes(const std::string &inputString) {
+    std::vector<unsigned char> sextets;
+    sextets.reserve(inputString.size());
+
+    for (unsigned char c : inputString) {
+        if (std::isspace(c)) {
+            continue;
+        }
+
+        if (c == '=') {
+            break;
+        }
+
+        signed char value = base64LookUpTable[static_cast<int>(c)];
+        if (value >= 0) {
+            sextets.push_back(static_cast<unsigned char>(value));
+        }
+    }
+
+    std::vector<u_int8_t> base64DecodedBytes;
+
+    std::size_t idx = 0;
+    while (idx + 3 < sextets.size()) {
+        unsigned char a = sextets[idx];
+        unsigned char b = sextets[idx + 1];
+        unsigned char c = sextets[idx + 2];
+        unsigned char d = sextets[idx + 3];
+
+        base64DecodedBytes.push_back(static_cast<u_int8_t>((a << 2) | (b >> 4)));
+        base64DecodedBytes.push_back(static_cast<u_int8_t>(((b & 0x0F) << 4) | (c >> 2)));
+        base64DecodedBytes.push_back(static_cast<u_int8_t>(((c & 0x03) << 6) | d));
+        idx += 4;
+    }
+
+    std::size_t remaining = sextets.size() - idx;
+    if (remaining == 2) {
+        unsigned char a = sextets[idx];
+        unsigned char b = sextets[idx + 1];
+        base64DecodedBytes.push_back(static_cast<u_int8_t>((a << 2) | (b >> 4)));
+    } else if (remaining == 3) {
+        unsigned char a = sextets[idx];
+        unsigned char b = sextets[idx + 1];
+        unsigned char c = sextets[idx + 2];
+        base64DecodedBytes.push_back(static_cast<u_int8_t>((a << 2) | (b >> 4)));
+        base64DecodedBytes.push_back(static_cast<u_int8_t>(((b & 0x0F) << 4) | (c >> 2)));
+    }
+
+    return base64DecodedBytes;
+}
