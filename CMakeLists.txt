@@ -27,6 +27,7 @@ add_executable(breakSingleCharacterXOR "Set-1/Challenge-4/breakSingleCharacterXO
 add_executable(repeatingKeyXOR "Set-1/Challenge-5/main.cpp")
 add_executable(breakRepeatingKeyXOR "Set-1/Challenge-6/main.cpp")
 add_executable(aes-ecb "Set-1/Challenge-7/main.cpp")
+add_executable(detect-aes-ecb "Set-1/Challenge-8/main.cpp")
 
 target_link_libraries(aes-ecb
     "${CMAKE_SOURCE_DIR}/lib/openssl-3.6.1/lib64/libssl.so"
@@ -38,4 +39,5 @@ add_compile_definitions(
     BREAK_SINGLE_KEY_XOR_INPUT_FILE_TXT_PATH="${CMAKE_SOURCE_DIR}/Set-1/Challenge-4/s1ch4.txt"
     BREAK_REPEATING_KEY_XOR_INPUT_FILE_TXT_PATH="${CMAKE_SOURCE_DIR}/Set-1/Challenge-6/s1ch6.txt"
     AES_ECB_ENCRYPTED_FILE_TXT_PATH="${CMAKE_SOURCE_DIR}/Set-1/Challenge-7/s1ch7.txt"
+    DETECT_AES_ECB_ENCRYPTED_FILE_TXT_PATH="${CMAKE_SOURCE_DIR}/Set-1/Challenge-8/s1ch8.txt"
 )
