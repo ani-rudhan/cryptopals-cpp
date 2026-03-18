@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <sstream>
 
 inline std::map<char, float> GetExpectedFreqDistMap_LowerCase(std::string filepathname = "") {
     if (filepathname.empty()) {
@@ -19,17 +18,26 @@ inline std::map<char, float> GetExpectedFreqDistMap_LowerCase(std::string filepa
         return result;
     }
 
+    const std::string delimiter = "-D-";
     std::string line;
     while (std::getline(inFile, line)) {
-        std::stringstream ss(line);
-        std::string character;
-        std::string distribution;
-        if (std::getline(ss, character, ',')) {
-            if (std::getline(ss, distribution)) {
-                char c = character[0];
-                result[c] = std::stof(distribution);
-            }
+        if (line.empty()) {
+            continue;
         }
+
+        const std::size_t delimiterPos = line.find(delimiter);
+        if (delimiterPos == std::string::npos || delimiterPos == 0) {
+            continue;
+        }
+
+        const std::string character = line.substr(0, delimiterPos);
+        const std::string distribution = line.substr(delimiterPos + delimiter.length());
+
+        if (character.size() != 1 || distribution.empty()) {
+            continue;
+        }
+
+        result[character[0]] = std::stof(distribution);
     }
 
     inFile.close();

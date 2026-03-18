@@ -47,7 +47,6 @@ inline double ScoreEnglishText(const std::string &candidate, const std::map<char
 
     int allowedCount = 0;
     int nonPrintableCount = 0;
-    int weirdPrintableCount = 0;
 
     for (unsigned char ch : candidate)
     {
@@ -64,10 +63,6 @@ inline double ScoreEnglishText(const std::string &candidate, const std::map<char
             continue;
         }
 
-        if (!std::isdigit(ch) && ch != '.' && ch != ',' && ch != '\'' && ch != '!' && ch != '?' && ch != ':' && ch != ';' && ch != '-')
-        {
-            weirdPrintableCount += 1;
-        }
     }
 
     if (allowedCount == 0)
@@ -94,7 +89,6 @@ inline double ScoreEnglishText(const std::string &candidate, const std::map<char
     }
 
     score += static_cast<double>(nonPrintableCount) * 250.0;
-    score += static_cast<double>(weirdPrintableCount) * 20.0;
 
     return score;
 }
