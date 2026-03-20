@@ -45,7 +45,7 @@ inline double ScoreEnglishText(const std::string &candidate, const std::map<char
 
     auto charCount = GetCharCount_LowerCase(candidate);
 
-    int allowedCount = 0;
+    int printableCount = 0;
     int nonPrintableCount = 0;
 
     for (unsigned char ch : candidate)
@@ -59,13 +59,13 @@ inline double ScoreEnglishText(const std::string &candidate, const std::map<char
         char lower = static_cast<char>(std::tolower(ch));
         if (expectedFreqDistMap.find(lower) != expectedFreqDistMap.end())
         {
-            allowedCount += 1;
+            printableCount += 1;
             continue;
         }
 
     }
 
-    if (allowedCount == 0)
+    if (printableCount == 0)
     {
         return std::numeric_limits<double>::infinity();
     }
@@ -80,7 +80,7 @@ inline double ScoreEnglishText(const std::string &candidate, const std::map<char
             observed = it->second;
         }
 
-        double expected = static_cast<double>(expectedProb) * static_cast<double>(allowedCount);
+        double expected = static_cast<double>(expectedProb) * static_cast<double>(printableCount);
         if (expected > 0.0)
         {
             double diff = static_cast<double>(observed) - expected;
