@@ -27,8 +27,8 @@ C++ solutions for the [Cryptopals Crypto Challenges](https://cryptopals.com/), o
 | 4 | Detect single-character XOR | `breakSingleCharacterXOR` | Apply challenge 3 scoring across 327 ciphertexts |
 | 5 | Implement repeating-key XOR | `repeatingKeyXOR` | Cyclic key XOR encryption |
 | 6 | Break repeating-key XOR | `breakRepeatingKeyXOR` | Hamming distance key-size detection, transposition attack |
-| 7 | AES in ECB mode | `aes-ecb` | AES-128-ECB decryption via OpenSSL |
-| 8 | Detect AES in ECB mode | `detect-aes-ecb` | Identifying repeated 16-byte blocks |
+| 7 | AES in ECB mode | `aesEcb` | AES-128-ECB decryption via OpenSSL |
+| 8 | Detect AES in ECB mode | `detectAesEcb` | Identifying repeated 16-byte blocks |
 
 ## Repository Layout
 
@@ -71,6 +71,6 @@ cmake --build build
 ./build/breakSingleCharacterXOR
 ./build/repeatingKeyXOR
 ./build/breakRepeatingKeyXOR
-./build/aes-ecb
-./build/detect-aes-ecb
+./build/aesEcb
+./build/detectAesEcb
 ```

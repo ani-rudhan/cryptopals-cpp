@@ -26,10 +26,10 @@ add_executable(singleByteXORCipher "Set-1/Challenge-3/main.cpp")
 add_executable(breakSingleCharacterXOR "Set-1/Challenge-4/breakSingleCharacterXOR.cpp")
 add_executable(repeatingKeyXOR "Set-1/Challenge-5/main.cpp")
 add_executable(breakRepeatingKeyXOR "Set-1/Challenge-6/main.cpp")
-add_executable(aes-ecb "Set-1/Challenge-7/main.cpp")
-add_executable(detect-aes-ecb "Set-1/Challenge-8/main.cpp")
+add_executable(aesEcb "Set-1/Challenge-7/main.cpp")
+add_executable(detectAesEcb "Set-1/Challenge-8/main.cpp")
 
-target_link_libraries(aes-ecb
+target_link_libraries(aesEcb
     "${CMAKE_SOURCE_DIR}/lib/openssl-3.6.1/lib64/libssl.so"
     "${CMAKE_SOURCE_DIR}/lib/openssl-3.6.1/lib64/libcrypto.so"
 )
